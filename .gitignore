@@ -3,6 +3,8 @@
 
 # Verification state and outputs
 .mv_cache.jsonl
+.mv_bulk.json
+.mv_bulk.json.tmp
 out/
 *.pyc
 __pycache__/
