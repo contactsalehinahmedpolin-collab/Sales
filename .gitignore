@@ -1,0 +1,14 @@
+# Secrets
+.env
+
+# Verification state and outputs
+.mv_cache.jsonl
+out/
+*.pyc
+__pycache__/
+.venv/
+venv/
+
+# Input lists (lead data should not live in git)
+leads.csv
+*.leads.csv
