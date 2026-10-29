@@ -1,0 +1,31 @@
+name: pages-check
+on:
+  push:
+    branches: [gh-pages]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enable Pages and test links
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+        run: |
+          set +e
+          {
+            echo "time: $(date -u)"
+            echo "--- GET pages"; gh api repos/$REPO/pages 2>&1 | head -c 600; echo
+            echo "--- POST pages"; gh api -X POST repos/$REPO/pages -f "source[branch]=gh-pages" -f "source[path]=/" 2>&1 | head -c 600; echo
+            sleep 90
+            for s in nufolix weem keranique; do
+              echo "$s $(curl -s -o /dev/null -w '%{http_code}' https://contactsalehinahmedpolin-collab.github.io/sales/d/$s.html)"
+            done
+          } > status.txt
+          cat status.txt
+          git config user.name bot; git config user.email bot@users.noreply.github.com
+          git checkout --orphan pages-status; git rm -rqf . ; cp /dev/null x; git add -f status.txt
+          git commit -qm status && git push -f origin pages-status
