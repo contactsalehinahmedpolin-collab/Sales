@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Sue at Microbz</title>
+<meta name="description" content="Three fixes for Microbz, written up for Sue Allen by Salehin at Sapphire Lead.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Work+Sans:wght@400;500;600&family=Caveat:wght@500;600&display=swap">
+<style>
+:root{
+  --paper:#F6F1E7; --sheet:#FFFDF8; --ink:#25211B; --soft:#5F574B; --faint:#8B8272; --line:#E2D9C8;
+  --leaf:#3F6B4A; --leaf-soft:#E4EDE2; --honey:#B9781F; --honey-soft:#F7E9CF; --mark:#FBE7A1; --red:#A5452D;
+  --serif:"Newsreader",Georgia,serif; --sans:"Work Sans","Helvetica Neue",Arial,sans-serif; --hand:"Caveat","Bradley Hand",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#17140F; --sheet:#1F1B15; --ink:#EFE7D8; --soft:#C3B8A5; --faint:#958A77; --line:#3A3328;
+  --leaf:#8FBF95; --leaf-soft:#22301F; --honey:#E2A64B; --honey-soft:#3A2A12; --mark:#5A4A16; --red:#E08A70; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#17140F; --sheet:#1F1B15; --ink:#EFE7D8; --soft:#C3B8A5; --faint:#958A77; --line:#3A3328;
+  --leaf:#8FBF95; --leaf-soft:#22301F; --honey:#E2A64B; --honey-soft:#3A2A12; --mark:#5A4A16; --red:#E08A70; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  padding:0 max(16px,env(safe-area-inset-left,0px)) 64px}
+a{color:var(--leaf);text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--honey);outline-offset:3px}
+p{margin:0 0 1em}
+h1,h2,h3{font-weight:500;line-height:1.15;margin:0}
+mark{background:linear-gradient(transparent 55%,var(--mark) 55%);color:inherit;padding:0 2px}
+
+.top{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:22px 0;
+  font-family:var(--sans);font-size:14px;color:var(--soft);flex-wrap:wrap}
+.top b{color:var(--ink);font-weight:600}
+.top a.book{font-weight:600;text-decoration:none;color:var(--sheet);background:var(--ink);padding:9px 14px;border-radius:8px}
+
+.page{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:minmax(0,680px) 1fr;gap:56px}
+.letter{min-width:0}
+.aside{position:relative;font-family:var(--sans);font-size:15px;color:var(--soft)}
+.aside .sticky{position:sticky;top:24px;display:grid;gap:16px}
+
+/* opening */
+.dateline{font-family:var(--sans);font-size:14px;color:var(--faint);margin-top:28px}
+h1{font-size:clamp(36px,5.6vw,56px);letter-spacing:-.015em;margin-top:14px}
+h1 i{color:var(--honey)}
+.opening{font-size:21px;margin-top:22px}
+.sig{font-family:var(--hand);font-size:34px;line-height:1;color:var(--ink);margin:6px 0 2px}
+.sigsub{font-family:var(--sans);font-size:14px;color:var(--faint)}
+
+.note{background:var(--sheet);border:1px solid var(--line);border-radius:6px;padding:18px 20px;box-shadow:0 1px 0 var(--line)}
+.note h4{margin:0 0 6px;font:600 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.sticky-note{background:var(--honey-soft);border:0;transform:rotate(-1.2deg);font-family:var(--hand);font-size:23px;line-height:1.25;color:var(--ink);padding:18px 20px 20px}
+.toc a{display:block;color:var(--soft);text-decoration:none;padding:3px 0}
+.toc a:hover{color:var(--ink)}
+
+/* body sections */
+section{margin-top:64px}
+.label{font:600 13px var(--sans);letter-spacing:.06em;color:var(--leaf);text-transform:uppercase}
+h2{font-size:clamp(28px,3.8vw,38px);margin-top:8px;letter-spacing:-.01em}
+.lead{font-size:20px;color:var(--soft);margin-top:12px}
+.margin{font-family:var(--hand);font-size:22px;color:var(--red);line-height:1.2;margin:4px 0 16px;display:block}
+
+.facts{font-family:var(--sans);font-size:15.5px;border-top:1px solid var(--line);margin-top:20px}
+.facts div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.facts b{font-family:var(--serif);font-size:24px;font-weight:600}
+.facts small{color:var(--faint);display:block;font-size:12.5px;margin-top:2px}
+
+.fix{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:clamp(20px,4vw,30px);margin-top:20px}
+.fix .num{font-family:var(--hand);font-size:44px;line-height:.8;color:var(--honey);float:left;margin:4px 14px 0 0}
+.fix h3{font-size:clamp(23px,3vw,28px)}
+.fix .now{font-family:var(--sans);font-size:15.5px;color:var(--soft);margin-top:14px;padding-left:14px;border-left:3px solid var(--line)}
+.fix ul{font-family:var(--sans);font-size:16px;padding-left:20px;margin:12px 0 0}
+.fix li{margin:8px 0}
+
+/* timeline slider */
+.day{margin-top:20px;font-family:var(--sans)}
+.day-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.day-head b{white-space:nowrap;font-family:var(--serif);font-size:clamp(30px,6vw,42px);font-weight:500;font-variant-numeric:tabular-nums}
+.day-msg{min-height:84px;font-size:16px;color:var(--soft);margin-top:6px}
+.day-msg strong{color:var(--ink)}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;margin-right:6px;vertical-align:1px}
+.tag.leak{background:#F4DDD5;color:#8A3520}
+.tag.fix{background:var(--leaf-soft);color:var(--leaf)}
+input[type=range]{width:100%;accent-color:var(--leaf);margin:10px 0 4px;height:28px}
+.ticks{display:flex;justify-content:space-between;font-size:12px;color:var(--faint)}
+
+/* calculator */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px;font-family:var(--sans)}
+.calc label{display:flex;justify-content:space-between;font-size:15px;color:var(--soft);gap:10px}
+.calc output{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.calc .ctrl{margin-bottom:12px}
+.calc .out{background:var(--leaf-soft);border-radius:8px;padding:20px;display:flex;flex-direction:column;justify-content:center}
+.calc .out b{font-family:var(--serif);font-size:44px;font-weight:600;color:var(--leaf);line-height:1.1;font-variant-numeric:tabular-nums}
+.calc .out span{font-size:14px;color:var(--soft)}
+.small{font-family:var(--sans);font-size:13.5px;color:var(--faint);margin-top:12px}
+
+/* product mock */
+.mock{display:grid;grid-template-columns:200px 1fr;gap:22px;margin-top:22px;font-family:var(--sans);align-items:start}
+.mock .pic{background:var(--honey-soft);border-radius:8px;display:grid;place-items:center;padding:20px 0;aspect-ratio:3/4}
+.mock .pic svg{width:58%}
+.mock h4{margin:0;font-family:var(--serif);font-size:26px;font-weight:500}
+.mock .sub{color:var(--faint);font-size:14px;margin:2px 0 14px}
+.opt{display:flex;justify-content:space-between;gap:12px;width:100%;text-align:left;padding:13px 14px;margin-bottom:10px;border-radius:8px;
+  background:var(--sheet);border:1.5px solid var(--line);font:inherit;color:var(--ink);cursor:pointer}
+.opt[aria-pressed=true]{border-color:var(--leaf);background:var(--leaf-soft)}
+.opt b{display:block;font-weight:600;font-size:15.5px}
+.opt small{color:var(--soft);font-size:13.5px}
+.opt .p{font-weight:600;white-space:nowrap}
+.buy{width:100%;padding:13px;border:0;border-radius:8px;background:var(--ink);color:var(--sheet);font:600 15.5px var(--sans);cursor:pointer}
+
+/* email */
+.mail{background:var(--sheet);border:1px solid var(--line);border-radius:8px;margin-top:20px;font-family:var(--sans);font-size:16px;overflow:hidden}
+.mail .hd{padding:14px 20px;border-bottom:1px solid var(--line);font-size:14px;color:var(--soft);display:grid;gap:3px}
+.mail .hd b{color:var(--ink)}
+.mail .bd{padding:20px}
+.mail .bd p{margin-bottom:.9em}
+.mail .btnish{display:inline-block;background:var(--leaf);color:#fff;padding:9px 14px;border-radius:6px;font-weight:600;margin:4px 0 14px}
+.copy{margin-top:12px;font:600 14.5px var(--sans);padding:10px 14px;border-radius:8px;border:1.5px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+
+/* label idea */
+.label-card{margin:22px auto 0;max-width:360px;background:#FFFDF8;color:#25211B;border:1px solid #E2D9C8;border-radius:6px;padding:22px 26px;text-align:center;transform:rotate(-1deg);
+  box-shadow:0 12px 30px -18px rgba(0,0,0,.5)}
+.label-card .m{font:600 11px var(--sans);letter-spacing:.38em}
+.label-card .n{font-family:var(--serif);font-size:34px;margin:6px 0 2px}
+.label-card .d{font:500 12px var(--sans);letter-spacing:.08em;border-top:1px solid #25211B;border-bottom:1px solid #25211B;padding:7px 0;margin-top:12px}
+.label-card .e{font-family:var(--hand);font-size:19px;color:#A5452D;margin-top:10px}
+
+.keep{margin-top:20px;font-family:var(--sans);font-size:16px;border-top:1px solid var(--line)}
+.keep div{display:grid;grid-template-columns:1fr auto;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.keep b{display:block;font-weight:600}
+.keep span{color:var(--soft);font-size:15px}
+.keep em{font-style:normal;font-size:13px;color:var(--leaf);white-space:nowrap;font-weight:600}
+
+.who{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px;font-family:var(--sans);font-size:15px}
+.who div{border-top:2px solid var(--ink);padding-top:10px}
+.who b{display:block;font-size:16px}
+.who span{color:var(--soft)}
+
+.close{margin-top:72px;padding-top:36px;border-top:1px solid var(--line)}
+.close .btn{display:inline-block;margin-top:8px;background:var(--leaf);color:#fff;text-decoration:none;font:600 16px var(--sans);padding:14px 22px;border-radius:8px}
+footer{max-width:1040px;margin:64px auto 0;font-family:var(--sans);font-size:12.5px;color:var(--faint)}
+
+@media (max-width:900px){
+  .page{grid-template-columns:1fr;gap:0}
+  .aside{order:-1;margin-top:8px}
+  .aside .sticky{position:static}
+  .aside .toc,.aside .quiet{display:none}
+}
+@media (max-width:600px){
+  body{font-size:18px}
+  .calc,.mock,.who{grid-template-columns:1fr}
+  .mock .pic{aspect-ratio:auto;height:180px}
+  .mock .pic svg{width:auto;height:150px}
+  .facts div{grid-template-columns:86px 1fr}
+  .keep div{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <span><b>Salehin Ahmed</b> · Sapphire Lead</span>
+  <a class="book" href="https://calendly.com/contact-salehinahmedpolin/30min" target="_blank" rel="noopener">Book 20 minutes</a>
+</div>
+
+<div class="page">
+<main class="letter">
+  <div class="dateline">17 November 2026 · for Sue Allen, Microbz, Calne</div>
+  <h1>Sue, here are the three fixes I promised, <i>written up properly.</i></h1>
+  <p class="opening">Thank you for the "yes". I spent the evening going through Microbz the way a new customer would: your site, your stockists, your reviews. What follows is what I found and what I'd change. Some of it you can use tomorrow without me.</p>
+  <div class="sig">Salehin</div>
+  <div class="sigsub">Salehin Ahmed, founder, Sapphire Lead</div>
+
+  <section id="saw">
+    <div class="label">What I saw</div>
+    <h2>A product people come back to by name.</h2>
+    <p class="lead">Fifteen strains, brewed for weeks with over fifty herbs and minerals, on a farm, by a family that started with five-litre jars on the kitchen table. Very few brands can say that. Here's what the store says today:</p>
+    <div class="facts">
+      <div><b>£24.95</b><span>One bottle of Bio-Live Gold, which lasts four weeks.<small>microbz.co.uk</small></span></div>
+      <div><b>3 months</b><span>How long your own page says to take it.<small>microbz.co.uk</small></span></div>
+      <div><b>None</b><span>No subscribe option on the Bio-Live Gold page. The 15% saving sits on a separate discounts page.<small>microbz.co.uk</small></span></div>
+      <div><b>282</b><span>Customer reviews on a Feefo account that's no longer active.<small>feefo.com</small></span></div>
+      <div><b>2</b><span>Trustpilot reviews in the last twelve months.<small>trustpilot.com</small></span></div>
+      <div><b>£60</b><span>The free-delivery threshold you had to withdraw when courier prices went up.<small>microbz.co.uk FAQs</small></span></div>
+    </div>
+    <span class="margin" style="margin-top:14px">↑ the gap between the second and third lines is where most of the money is.</span>
+  </section>
+
+  <section id="fix1">
+    <div class="label">Fix one</div>
+    <div class="fix">
+      <span class="num">1</span>
+      <h3>Make the three-month course the easy choice</h3>
+      <p class="now">Today a new customer buys one bottle, gets a dispatch email, and then hears nothing until the bottle runs out. Most mean to reorder. Many don't.</p>
+      <ul>
+        <li>Put the <mark>three-month course</mark> first on every Bio-Live page: a bottle every four weeks, 15% off, free delivery, pause any time. One bottle stays one tap away.</li>
+        <li>On <b>day 21</b>, when the bottle is low, send a short email and text: "About a week left." One tap to continue.</li>
+        <li>On <b>day 60</b>, a letter from you about the farm and the batch.</li>
+      </ul>
+      <div class="day" aria-label="One customer's ninety days">
+        <div class="day-head"><span style="font-size:15px;color:var(--soft)">Drag through one customer's first 90 days</span><b>Day <span id="dayN">0</span></b></div>
+        <input id="daySlider" type="range" min="0" max="90" value="0" aria-label="Day">
+        <div class="ticks"><span>Day 0</span><span>30</span><span>60</span><span>90</span></div>
+        <div class="day-msg" id="dayMsg" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:34px;font-size:24px">What it's worth, with your numbers</h3>
+    <p style="color:var(--soft);font-family:var(--sans);font-size:16px;margin-top:6px">A rough sum, not a forecast. Move the sliders to roughly where you are. On a call we'd swap the guesses for your Shopify figures.</p>
+    <div class="calc">
+      <div>
+        <div class="ctrl"><label for="c1">New Bio-Live customers a month <output id="v1">150</output></label><input id="c1" type="range" min="25" max="1000" step="25" value="150"></div>
+        <div class="ctrl"><label for="c2">Finish 3 months today <output id="v2">20%</output></label><input id="c2" type="range" min="5" max="60" value="20"></div>
+        <div class="ctrl"><label for="c3">With the course &amp; reminders <output id="v3">35%</output></label><input id="c3" type="range" min="5" max="80" value="35"></div>
+      </div>
+      <div class="out"><b id="sum">£0</b><span>extra a year from the same customers</span></div>
+    </div>
+    <p class="small">Each extra customer who finishes the course buys two more bottles at £21.21 (£24.95 less 15%). Nothing after day 90 is counted.</p>
+
+    <h3 style="margin-top:34px;font-size:24px">Roughly how the page would look</h3>
+    <div class="mock">
+      <div class="pic">
+        <svg viewBox="0 0 160 360" aria-hidden="true"><rect x="54" y="6" width="52" height="36" rx="6" fill="#3a332a"/><path d="M58 40h44v34c0 8 30 22 30 52v206c0 10-8 18-18 18H46c-10 0-18-8-18-18V126c0-30 30-44 30-52z" fill="#B9781F"/><rect x="34" y="170" width="92" height="96" rx="4" fill="#FFFDF8"/><text x="80" y="200" text-anchor="middle" font-family="Work Sans,Arial" font-size="9" letter-spacing="3" fill="#25211B">MICROBZ</text><text x="80" y="228" text-anchor="middle" font-family="Newsreader,Georgia" font-size="20" fill="#25211B">Bio-Live</text><text x="80" y="248" text-anchor="middle" font-family="Newsreader,Georgia" font-style="italic" font-size="15" fill="#B9781F">Gold</text></svg>
+      </div>
+      <div>
+        <h4>Bio-Live Gold</h4>
+        <div class="sub">475ml · brewed in small batches in Calne</div>
+        <button class="opt" type="button" aria-pressed="true" data-k="c"><span><b>Three-month course</b><small>A bottle every 4 weeks · 15% off · free delivery · pause any time</small></span><span class="p">£21.21</span></button>
+        <button class="opt" type="button" aria-pressed="false" data-k="o"><span><b>One bottle</b><small>Four weeks · delivery from £3.75</small></span><span class="p">£24.95</span></button>
+        <button class="buy" type="button" id="buy">Start my course · £21.21</button>
+        <p class="small">A rough sketch for our conversation, not a finished design.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="fix2">
+    <div class="label">Fix two</div>
+    <div class="fix">
+      <span class="num">2</span>
+      <h3>Bring your reviews home</h3>
+      <p class="now">Your customers have already done the selling: 282 reviews, lines like <i>"the whole family loves it"</i> and <i>"so easy to take"</i>. But they sit on an inactive Feefo account, and your product pages show none of them. Healf shows 4.9 stars beside Bio-Live Revive. Your own shop should too.</p>
+      <ul>
+        <li>Import the Feefo history into a Shopify review app, so every product shows its real count.</li>
+        <li>Ask for a review automatically on <b>day 14</b>, and invite to Trustpilot.</li>
+        <li>Use customers' own words in emails and ads, kept within UK ASA rules: their experience, never a cure.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="fix3">
+    <div class="label">Fix three</div>
+    <div class="fix">
+      <span class="num">3</span>
+      <h3>Take cost out of every bottle you ship</h3>
+      <p class="now">You dropped free delivery because courier prices rose. Part of the answer is what goes in the box.</p>
+      <ul>
+        <li>I'll get a written quote from our factories in Guangdong for the <b>same spec</b>: 100% recycled PET 475ml bottle, recyclable cap, wash-off label, and a 3-bottle box sized for Royal Mail's lowest weight band.</li>
+        <li>Landed in Calne, freight and duty included, next to what you pay now.</li>
+        <li>If the saving pays for free delivery on the course, fix one gets stronger.</li>
+      </ul>
+      <p class="now" style="border-color:var(--honey)">An honest note: if it doesn't beat your UK supplier, or the recycled content can't be certified to your standard, keep your supplier. You lose nothing by knowing the number.</p>
+    </div>
+  </section>
+
+  <section id="email">
+    <div class="label">Already written</div>
+    <h2>Your day-21 email. Use it tomorrow.</h2>
+    <p class="lead">Paste it into Shopify Email and set it to go 21 days after a first Bio-Live Gold order. No call needed.</p>
+    <div class="mail">
+      <div class="hd"><span><b>From:</b> Sue at Microbz</span><span><b>Subject:</b> About a week left in your bottle</span></div>
+      <div class="bd" id="mailBody">
+        <p>Hello {first name},</p>
+        <p>If you've taken your 15ml each morning, your bottle of Bio-Live Gold has about a week left.</p>
+        <p>Most of our customers take it for three months, because the routine is what counts. So rather than run out, you can switch to the three-month course: a fresh bottle every four weeks, 15% off, cancel any time.</p>
+        <span class="btnish">Continue my course</span>
+        <p>Every bottle is still brewed in small batches on our farm in Calne, the way Jeff and I started it nearly twenty years ago.</p>
+        <p>Warmly,<br>Sue</p>
+        <p style="font-size:14px;color:var(--soft)">P.S. Prefer one bottle at a time? Reorder one bottle works too.</p>
+      </div>
+    </div>
+    <button class="copy" type="button" id="copy">Copy this email</button>
+  </section>
+
+  <section id="idea">
+    <div class="label">One bigger idea</div>
+    <h2>Every probiotic says "15 strains". Only you can say when it was brewed.</h2>
+    <p class="lead">Big brands make capsules in factories. You brew on a farm, as a family. I'd put that on every bottle, in every box and in every email.</p>
+    <div class="label-card">
+      <div class="m">MICROBZ</div>
+      <div class="n">Bio-Live Gold</div>
+      <div class="d">BREWED IN CALNE · 3 NOV 2026 · BATCH 1147</div>
+      <div class="e">just an example, the date &amp; batch are made up</div>
+    </div>
+    <p style="margin-top:26px">Around it, a short <b>batch letter</b> in every course box: what's happening on the farm, the season, the batch. Different every time, so people read it. Course customers become a small <b>Farm Club</b>: first taste of new blends like the lion's mane, a brewery visit day. The customers who've built the routine are the ones who'll tell their friends.</p>
+  </section>
+
+  <section id="keep">
+    <div class="label">Yours to keep</div>
+    <h2>What you'd have after 20 minutes, whatever you decide</h2>
+    <div class="keep">
+      <div><span><b>Landed-cost factory quote</b>Bottle, cap, label and 3-bottle box, next to your current cost.</span><em>72 hours after your specs</em></div>
+      <div><span><b>The full reorder emails</b>Day 21, 28 and 60, in your voice, ready for Shopify Email or Klaviyo.</span><em>within 5 working days</em></div>
+      <div><span><b>Course-first page layout</b>The Bio-Live Gold page with the course as the default.</span><em>within 5 working days</em></div>
+      <div><span><b>Review recovery steps</b>How to bring the Feefo history onto your pages.</span><em>on the call</em></div>
+    </div>
+    <p style="margin-top:18px">No fee and no contract. If you'd like us to build and run it afterwards, I'll quote a fixed scope. If not, it's yours to use.</p>
+  </section>
+
+  <section id="me">
+    <div class="label">Who's writing</div>
+    <h2>A small team, and a factory network in Guangdong</h2>
+    <p class="lead">I run Sapphire Lead. We build the marketing for wellness brands: product pages, reorder emails, ads. Because I live and work in Guangdong, we also source packaging straight from the factories. Some of our work:</p>
+    <div class="who">
+      <div><b>VitalMax / NeuroFlex</b><span>Built the full direct-to-consumer marketing system.</span></div>
+      <div><b>Dr. Roni DeLuz</b><span>Designed and built two practitioner websites.</span></div>
+      <div><b>MedRevIQ</b><span>Rebuilt the company website end to end.</span></div>
+      <div><b>Our Guangdong company</b><span>Direct factory access for bottles, caps and boxes.</span></div>
+    </div>
+  </section>
+
+  <section class="close" id="talk">
+    <h2>Shall we take 20 minutes?</h2>
+    <p class="lead">We'd go through the three fixes with your real numbers, and I'd take your packaging specs for the quote. Katie is very welcome to join.</p>
+    <p style="font-family:var(--sans);font-size:16px;color:var(--soft)">One timing note: Chinese New Year is on 6 February, and most factories close from late January for three or four weeks. To get samples to Calne before then, the quote needs to start in the next few weeks.</p>
+    <a class="btn" href="https://calendly.com/contact-salehinahmedpolin/30min" target="_blank" rel="noopener">Pick a time</a>
+    <p style="margin-top:18px;font-family:var(--sans);font-size:15.5px;color:var(--soft)">Or just reply to my email with two times that suit you, or with roughly what you pay per bottle and cap today, and I'll start on the quote straight away.</p>
+    <div class="sig" style="margin-top:20px">Salehin</div>
+  </section>
+</main>
+
+<aside class="aside">
+  <div class="sticky">
+    <div class="note sticky-note">Sue, if you only read one part, read fix one. That's where the money is.</div>
+    <div class="note toc quiet"><h4>On this page</h4>
+      <a href="#saw">What I saw</a><a href="#fix1">1 · The three-month course</a><a href="#fix2">2 · Your reviews</a><a href="#fix3">3 · Cost per bottle</a><a href="#email">The day-21 email</a><a href="#idea">One bigger idea</a><a href="#keep">Yours to keep</a><a href="#talk">20 minutes?</a></div>
+    <div class="note quiet"><h4>Sources</h4>Your site (product page, FAQs, delivery, discounts), Feefo, Trustpilot and Healf, checked 17 Nov 2026. Where I've guessed, I've said so.</div>
+  </div>
+</aside>
+</div>
+
+<footer>Written for Microbz by Salehin Ahmed, Sapphire Lead. Not affiliated with Feefo, Trustpilot, Healf or Royal Mail.</footer>
+
+<script>
+(()=>{
+const $=s=>document.querySelector(s);
+const beats=[[0,'fix','Day 0','She buys her first bottle and takes 15ml the next morning.'],
+[3,'leak','Today','An order confirmation and a dispatch email. Then nothing.'],
+[14,'fix','Fix 2','"How are you finding it?" A review request while she has an opinion.'],
+[21,'fix','Fix 1','"About a week left in your bottle." One tap continues the course.'],
+[28,'leak','Today','The bottle runs out. She means to reorder. Without a reminder, often she doesn’t.'],
+[60,'fix','Fix 1','A letter from Sue: the farm, the season, the batch.'],
+[90,'fix','Day 90','She’s finished the course your own page recommends, and tells a friend.']];
+const sl=$('#daySlider'),dn=$('#dayN'),dm=$('#dayMsg');
+function day(){const d=+sl.value;dn.textContent=d;let b=beats[0];for(const x of beats)if(d>=x[0])b=x;
+  dm.innerHTML=`<span class="tag ${b[1]}">${b[2]}</span><strong>${b[3]}</strong>`}
+sl.addEventListener('input',day);day();
+
+const c1=$('#c1'),c2=$('#c2'),c3=$('#c3'),sum=$('#sum');
+function calc(){let a=+c1.value,b=+c2.value,c=+c3.value;if(c<b){c=b;c3.value=b}
+  $('#v1').textContent=a;$('#v2').textContent=b+'%';$('#v3').textContent=c+'%';
+  sum.textContent='£'+Math.round(a*12*((c-b)/100)*2*21.21).toLocaleString('en-GB')}
+[c1,c2,c3].forEach(x=>x.addEventListener('input',calc));calc();
+
+const opts=document.querySelectorAll('.opt'),buy=$('#buy');
+opts.forEach(o=>o.addEventListener('click',()=>{opts.forEach(x=>x.setAttribute('aria-pressed',x===o));
+  buy.textContent=o.dataset.k==='c'?'Start my course · £21.21':'Add one bottle · £24.95'}));
+
+$('#copy').addEventListener('click',async e=>{
+  const t='Subject: About a week left in your bottle\n\n'+$('#mailBody').innerText.replace('Continue my course','[Continue my course]').replace('Reorder one bottle','[Reorder one bottle]');
+  try{await navigator.clipboard.writeText(t);e.target.textContent='Copied'}catch(_){e.target.textContent='Select the email text to copy it'}});
+})();
+</script>
+</body>
+</html>
